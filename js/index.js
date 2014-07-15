@@ -43,6 +43,7 @@ var app = {
     onDeviceReady: function() {
 
         console.log('device ready');
+        navigator.splashscreen.hide();
 
     },
 
