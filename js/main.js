@@ -47,7 +47,7 @@ function takePicture() {
 
 	var options = {
 	                    quality : 100,
-	                    destinationType : Camera.DestinationType.FILE_URI,
+	                    destinationType : Camera.DestinationType.DATA_URL,
 	                    sourceType : Camera.PictureSourceType.CAMERA,
 	                    allowEdit : true,
 	                    encodingType: Camera.EncodingType.JPEG,
@@ -64,9 +64,11 @@ function takePicture() {
 }
 
 
-function onSuccess(fileURI) {
+function onSuccess(imageData) {
 
-		
+
+		//fileURI
+			
 	    var image = document.getElementById('reportImage');
 	    image.src = "data:image/jpeg;base64," + imageData;
 	    
