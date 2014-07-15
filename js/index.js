@@ -43,9 +43,6 @@ var app = {
     onDeviceReady: function() {
 
         
-        app.receivedEvent('deviceready');
-
-        
 
     },
 
@@ -53,47 +50,6 @@ var app = {
     receivedEvent: function(id) {
 
        
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
         
-    },
-
-    takePicture: function () {
-
-        console.log('take picture');
-        var options = {
-                            quality : 75,
-                            destinationType : Camera.DestinationType.DATA_URL,
-                            sourceType : Camera.PictureSourceType.CAMERA,
-                            allowEdit : true,
-                            encodingType: Camera.EncodingType.JPEG,
-                            targetWidth: 100,
-                            targetHeight: 100,
-                            popoverOptions: CameraPopoverOptions,
-                            saveToPhotoAlbum: false 
-                    };
-
-
-        navigator.camera.getPicture(this.onSuccess, this.onFail, options);
-
-    },
-
-    onSuccess: function(imageURI) {
-
-        var image = document.getElementById('picture');
-        image.src = "data:image/jpeg;base64," + imageURI
-    },
-
-    onFail: function(message) {
-
-        var m = 'Failed because: ' + message;
-        document.getElementById('cameraDebug').innerHTML = m;
-
     }
 };
