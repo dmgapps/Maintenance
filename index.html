@@ -301,14 +301,20 @@
           <form method="post">
 
             <div class="ui-field-contain">
-              <label for="fullname">Full name:</label>
-              <input type="text" name="fullname" id="fullname" placeholder="Your name..">
+              <label for="fullname">Reporting Employee: </label>
+              <input type="text" name="fullname" id="fullName" placeholder="Your Name...">
+           
+              <!--
+              <label for="email">Date/Time of Filed Report: </label>
+              <input type="email" name="email" id="" placeholder="Your Nmail...">
+            -->
+            
 
-              <label for="email">E-mail:</label>
-              <input type="email" name="email" id="email" placeholder="Your email..">
+              <label for="incidentreport">Incident Report</label>
+              <input type="text" name="incidentReport" id="incidentReport" placeholder="Incident Report..">
 
-              <label for="fullname">Incident Report</label>
-              <input type="text" name="fullname" id="fullname" placeholder="Incident report...">
+              <label for="storelocation">Store Location</label>
+              <input type="text" name="storeLocation" id="storeLocation" placeholder="Store Location...">
 
               <a href="javascript:takePicture();" data-role="button">Take/Upload Picture</a>
 
@@ -318,6 +324,8 @@
 
 
             </div>
+
+            <a href="javascript:sendForm();" data-role="button">Submit</a>
           </form>
 
         </div>

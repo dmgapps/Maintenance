@@ -1,5 +1,4 @@
-
-
+var imageData;
 
 $(document).bind('mobileinit pageinit', function(e){
 
@@ -21,6 +20,23 @@ $( document ).ready(function(){
 
 });
 
+
+function sendForm() {
+
+	var fullName = $('#fullName').val();
+	var storeLocation = $('#storeLocation').val();
+	var incidentReport = $('#incidentReport').val();
+
+	var url = 'http://dmgdemos.com/mallapp/_server-scripts/uploadForm.php';
+	var params = {image: imageData};
+
+	$.post(url, params, function(data) {
+				
+		alert('data sent');
+
+	});
+
+}
 
 
 function getReportForm(reportName) {
@@ -64,13 +80,14 @@ function takePicture() {
 }
 
 
-function onSuccess(imageData) {
+function onSuccess(data) {
 
 
 		//fileURI
 			
 	    var image = document.getElementById('reportImage');
-	    image.src = "data:image/jpeg;base64," + imageData;
+	    image.src = "data:image/jpeg;base64," + data;
+	    imageData = data;
 	    
 	    /*
 	    var tab_id = document.getElementById('event_tab_id').value;
