@@ -94,6 +94,8 @@ function updateHtml() {
 
 	$('#imageData').html(html);
 
+	console.log(imageArray);
+
 }
 
 
