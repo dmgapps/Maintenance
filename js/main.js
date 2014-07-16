@@ -32,7 +32,7 @@ function sendForm() {
 
 	$.post(url, params, function(data) {
 				
-		alert('data sent');
+		console.log(data);
 
 	});
 
