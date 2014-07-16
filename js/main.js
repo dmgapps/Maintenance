@@ -29,7 +29,7 @@ function sendForm() {
 	var incidentReport = $('#incidentReport').val();
 
 	var url = 'http://dmgdemos.com/mallapp/_server-scripts/uploadForm.php';
-	var params = {image: imageData, posted:true, array:imageArray};
+	var params = {'images[]': imageArray, posted:true};
 
 	$.post(url, params, function(data) {
 				
