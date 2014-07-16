@@ -1,4 +1,5 @@
 var imageData;
+var imageArray = [];
 
 $(document).bind('mobileinit pageinit', function(e){
 
@@ -28,7 +29,7 @@ function sendForm() {
 	var incidentReport = $('#incidentReport').val();
 
 	var url = 'http://dmgdemos.com/mallapp/_server-scripts/uploadForm.php';
-	var params = {image: imageData};
+	var params = {image: imageData, posted:true, array:imageArray};
 
 	$.post(url, params, function(data) {
 				
@@ -79,15 +80,32 @@ function takePicture() {
 
 }
 
+function updateHtml() {
+
+	var html = "";
+
+	for(var i = 0; i < imageArray.length; i++) {
+
+		//"data:image/jpeg;base64," + data;
+		var src = "data:image/jpeg;base64," + imageArray[i];
+		html += '<img src="' + src + '" />';
+		html += '<br />';
+	}
+
+	$('#imageData').html(html);
+
+}
+
 
 function onSuccess(data) {
 
 
 		//fileURI
 			
-	    var image = document.getElementById('reportImage');
-	    image.src = "data:image/jpeg;base64," + data;
-	    imageData = data;
+	    //var image = document.getElementById('reportImage');
+	    //image.src = "data:image/jpeg;base64," + data;
+	    imageArray.push(data);  
+	    updateHtml();
 	    
 	    /*
 	    var tab_id = document.getElementById('event_tab_id').value;
