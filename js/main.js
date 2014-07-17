@@ -1,6 +1,6 @@
 var imageData;
 var imageArray = [];
-var destinationType = "DATA_URL";
+var DESTINATION_TYPE = "Camera.DestinationType.DATA_URL";
 
 $(document).bind('mobileinit pageinit', function(e)	{
 
@@ -12,12 +12,19 @@ $(document).bind('mobileinit pageinit', function(e)	{
 
 $( document ).ready(function(){
 
-
 	/*
-
 		document is loaded
-
 	*/ 
+
+	$(document).on("change", "#takeNew", function (event, ui) {
+	    //console.log('take new');
+	    DESTINATION_TYPE = "Camera.DestinationType.DATA_URL";
+	});
+
+	$(document).on("change", "#fromAlbum", function (event, ui) {
+	    //console.log('from album');
+	    DESTINATION_TYPE = "Camera.DestinationType.FILE_URI";
+	});
 
 
 });
@@ -80,11 +87,13 @@ function getReportForm(reportName) {
 }
 
 
+
+
 function takePicture() {
 
 	var options = {
 	                    quality : 100,
-	                    destinationType : Camera.DestinationType.DATA_URL,
+	                    destinationType : DESTINATION_TYPE,
 	                    sourceType : Camera.PictureSourceType.CAMERA,
 	                    allowEdit : true,
 	                    encodingType: Camera.EncodingType.JPEG,
