@@ -296,7 +296,7 @@
         
         <div id="reports-form-content">
                 
-          <center>Form goes here</center>
+          <center>
 
           <form method="post">
 
@@ -316,6 +316,17 @@
               <label for="storelocation">Store Location</label>
               <input type="text" name="storeLocation" id="storeLocation" placeholder="Store Location...">
 
+              <br /><br />
+
+              <fieldset data-role="controlgroup" data-theme="b" data-type="horizontal">
+                      <legend>Picture Type</legend>
+                      <input type="radio" name="radio-choice-t-6" id="radio-choice-t-6a" value="on" checked="checked">
+                      <label for="radio-choice-t-6a">From Album</label>
+                      <input type="radio" name="radio-choice-t-6" id="radio-choice-t-6b" value="off">
+                      <label for="radio-choice-t-6b">Take New</label>
+              </fieldset>
+
+
               <a href="javascript:takePicture();" data-role="button">Take/Upload Picture</a>
 
               <br />
@@ -328,6 +339,7 @@
 
             <a href="javascript:sendForm();" data-role="button">Submit</a>
           </form>
+          </center>
 
         </div>
 
