@@ -138,7 +138,7 @@ function onSuccessAlbum(file_uri) {
 		var data = encodeImageUri(file_uri);
 		data = data.replace("data:image/jpeg;base64,", "");
 	    imageArray.push(data);
-	    console.log(data);
+	    console.log("FILE_URI: " +  data);
 	    updateHtml();
 
 }
@@ -150,7 +150,8 @@ function onSuccess(data) {
 		//fileURI
 			
 	    //var image = document.getElementById('reportImage');
-	    imageArray.push(data);  
+	    imageArray.push(data);
+	    console.log("DATA_URL: " + data);  
 	    updateHtml();
 
 	     	
