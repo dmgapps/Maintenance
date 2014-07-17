@@ -137,7 +137,8 @@ function onSuccessAlbum(file_uri) {
 
 		var data = encodeImageUri(file_uri);
 		data = data.replace("data:image/jpeg;base64,", "");
-	    imageArray.push(data);  
+	    imageArray.push(data);
+	    console.log(data);
 	    updateHtml();
 
 }
