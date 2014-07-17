@@ -130,13 +130,13 @@ function updateHtml() {
 
 	$('#imageData').html(html);
 
-	console.log(imageArray);
 
 }
 
 function onSuccessAlbum(file_uri) {
 
 		var data = encodeImageUri(file_uri);
+		console.log("uri data: " + data);
 	    imageArray.push(data);  
 	    updateHtml();
 
@@ -151,32 +151,9 @@ function onSuccess(data) {
 	    //var image = document.getElementById('reportImage');
 	    imageArray.push(data);  
 	    updateHtml();
-	    
-	    /*
-	    var tab_id = document.getElementById('event_tab_id').value;
-	    var url = siteUrl + 'photoUpload.php';
-	    
 
-	    var win = function (r) {
-	            clearCache();
-	            retries = 0;
-	            console.log(r);
-	        }
-	     
-	        var fail = function (error) {
-	        	console.log(error);
-	            if (retries == 0) {
-	                retries ++
-	                setTimeout(function() {
-	                    onSuccess(fileURI)
-	                }, 1000)
-	            } else {
-	                retries = 0;
-	                clearCache();
-	                alert('failed.');
-	            }
-	        }
-	     
+	     	
+	     	/*
 	        var options = new FileUploadOptions();
 	        options.fileKey = "file";
 	        options.fileName = fileURI.substr(fileURI.lastIndexOf('/') + 1);
