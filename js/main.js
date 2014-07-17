@@ -16,12 +16,12 @@ $( document ).ready(function(){
 		document is loaded
 	*/ 
 
-	$(document).on("change", "#takeNew", function (event, ui) {
+	$(document).on("change", "#radio-choice-t-6a", function (event, ui) {
 	    //console.log('take new');
 	    DESTINATION_TYPE = "Camera.DestinationType.DATA_URL";
 	});
 
-	$(document).on("change", "#fromAlbum", function (event, ui) {
+	$(document).on("change", "#radio-choice-t-6b", function (event, ui) {
 	    //console.log('from album');
 	    DESTINATION_TYPE = "Camera.DestinationType.FILE_URI";
 	});
