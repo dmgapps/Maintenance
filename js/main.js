@@ -16,6 +16,7 @@ $( document ).ready(function() {
 		document is loaded
 	*/ 
 
+	reader = new FileReader();
 
 
 });
@@ -143,15 +144,27 @@ function onSuccessAlbum(file_uri) {
 	    console.log("FILE_URI: " +  data);
 	    updateHtml();
 	    */
+	    var reader = new FileReader();
+	    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFileSystem, fail);
+		
 
-	    var reader  = new FileReader();
-		reader.readAsDataURL(file_uri);
+	    function gotFS(fileSystem) {
 
-		reader.onloadend = function () {
+	    	console.log('got filesystem');
+	        fileSystem.root.getFile(file_uri, {create: false, exclusive: false}, gotFileEntry, fail);
+	    };
 
-		    console.log('reader result: ' + reader.result);
+	    function gotFileEntry(fileEntry) {
 
-		 }
+	    	console.log('got file entry');
+	        reader.readAsDataURL(fileEntry);
+
+	    };
+
+	    function fail(message) {
+
+	    	console.log(message);
+	    };
 
 }
 
