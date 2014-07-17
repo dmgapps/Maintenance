@@ -52,6 +52,7 @@ function encodeImageUri(imageUri) {
     };
 
     img.src = imageUri;
+    console.log("encodeImageUri: " + imageUri);
     var dataUrl = c.toDataURL("image/jpeg");
 
     return dataUrl;
