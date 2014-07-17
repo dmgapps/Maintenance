@@ -18,15 +18,21 @@ $( document ).ready(function(){
 	*/ 
 
 	$(document).on("change", "#radio-choice-t-6a", function (event, ui) {
-	    //console.log('take new');
 	    DESTINATION_TYPE = "Camera.DestinationType.DATA_URL";
 	    SOURCE_TYPE = "Camera.PictureSourceType.CAMERA";
+
+	    console.log("DESTINATION_TYPE: " + DESTINATION_TYPE);
+	    console.log("SOURCE_TYPE: " + SOURCE_TYPE);
+
 	});
 
 	$(document).on("change", "#radio-choice-t-6b", function (event, ui) {
-	    //console.log('from album');
 	    DESTINATION_TYPE = "Camera.DestinationType.FILE_URI";
 	    SOURCE_TYPE = "Camera.PictureSourceType.PHOTOLIBRARY";
+
+	    console.log("DESTINATION_TYPE: " + DESTINATION_TYPE);
+	    console.log("SOURCE_TYPE: " + SOURCE_TYPE);
+
 	});
 
 
