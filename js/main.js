@@ -1,6 +1,7 @@
 var imageData;
 var imageArray = [];
 var DESTINATION_TYPE = "Camera.DestinationType.DATA_URL";
+var SOURCE_TYPE = "Camera.PictureSourceType.CAMERA";
 
 $(document).bind('mobileinit pageinit', function(e)	{
 
@@ -19,11 +20,13 @@ $( document ).ready(function(){
 	$(document).on("change", "#radio-choice-t-6a", function (event, ui) {
 	    //console.log('take new');
 	    DESTINATION_TYPE = "Camera.DestinationType.DATA_URL";
+	    SOURCE_TYPE = "Camera.PictureSourceType.CAMERA";
 	});
 
 	$(document).on("change", "#radio-choice-t-6b", function (event, ui) {
 	    //console.log('from album');
 	    DESTINATION_TYPE = "Camera.DestinationType.FILE_URI";
+	    SOURCE_TYPE = "Camera.PictureSourceType.PHOTOLIBRARY";
 	});
 
 
@@ -94,7 +97,7 @@ function takePicture() {
 	var options = {
 	                    quality : 100,
 	                    destinationType : DESTINATION_TYPE,
-	                    sourceType : Camera.PictureSourceType.CAMERA,
+	                    sourceType : SOURCE_TYPE,
 	                    allowEdit : true,
 	                    encodingType: Camera.EncodingType.JPEG,
 	                    targetWidth: 500,
