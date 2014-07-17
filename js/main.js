@@ -1,7 +1,6 @@
 var imageData;
 var imageArray = [];
-var DESTINATION_TYPE = "Camera.DestinationType.DATA_URL";
-var SOURCE_TYPE = "Camera.PictureSourceType.CAMERA";
+
 
 $(document).bind('mobileinit pageinit', function(e)	{
 
@@ -11,29 +10,12 @@ $(document).bind('mobileinit pageinit', function(e)	{
 });
 
 
-$( document ).ready(function(){
+$( document ).ready(function() {
 
 	/*
 		document is loaded
 	*/ 
 
-	$(document).on("change", "#radio-choice-t-6a", function (event, ui) {
-	    DESTINATION_TYPE = "Camera.DestinationType.DATA_URL";
-	    SOURCE_TYPE = "Camera.PictureSourceType.CAMERA";
-
-	    console.log("DESTINATION_TYPE: " + DESTINATION_TYPE);
-	    console.log("SOURCE_TYPE: " + SOURCE_TYPE);
-
-	});
-
-	$(document).on("change", "#radio-choice-t-6b", function (event, ui) {
-	    DESTINATION_TYPE = "Camera.DestinationType.FILE_URI";
-	    SOURCE_TYPE = "Camera.PictureSourceType.PHOTOLIBRARY";
-
-	    console.log("DESTINATION_TYPE: " + DESTINATION_TYPE);
-	    console.log("SOURCE_TYPE: " + SOURCE_TYPE);
-
-	});
 
 
 });
@@ -46,7 +28,7 @@ function sendForm() {
 	var incidentReport = $('#incidentReport').val();
 
 	var url = 'http://dmgdemos.com/mallapp/_server-scripts/uploadForm.php';
-	var params = {'images[]': imageArray, posted:true};
+	var params = {'images[]': imageArray, posted:true, fullname: fullName, storelocation: storeLocation, incidentreport: incidentReport};
 
 	$.post(url, params, function(data) {
 				
@@ -91,8 +73,6 @@ function getReportForm(reportName) {
 
 	});
 
-
-
 }
 
 
@@ -102,8 +82,8 @@ function takePicture() {
 
 	var options = {
 	                    quality : 100,
-	                    destinationType : DESTINATION_TYPE,
-	                    sourceType : SOURCE_TYPE,
+	                    destinationType : Camera.DestinationType.DATA_URL,
+	                    sourceType : Camera.PictureSourceType.CAMERA,
 	                    allowEdit : true,
 	                    encodingType: Camera.EncodingType.JPEG,
 	                    targetWidth: 500,
@@ -112,8 +92,27 @@ function takePicture() {
 	                    saveToPhotoAlbum: false 
 	            };
 
-
 	navigator.camera.getPicture(onSuccess, onFail, options);
+
+
+}
+
+
+function takePictureAlbum() {
+
+	var options = {
+	                    quality : 100,
+	                    destinationType : destinationType: Camera.DestinationType.FILE_URI,
+	                    sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM,
+	                    allowEdit : true,
+	                    encodingType: Camera.EncodingType.JPEG,
+	                    targetWidth: 500,
+	                    targetHeight: 500,
+	                    popoverOptions: CameraPopoverOptions,
+	                    saveToPhotoAlbum: false 
+	            };
+
+	navigator.camera.getPicture(onSuccessAlbum, onFail, options);
 
 
 }
@@ -124,7 +123,6 @@ function updateHtml() {
 
 	for(var i = 0; i < imageArray.length; i++) {
 
-		//"data:image/jpeg;base64," + data;
 		var src = "data:image/jpeg;base64," + imageArray[i];
 		html += '<img src="' + src + '" />';
 		html += '<br />';
@@ -133,6 +131,14 @@ function updateHtml() {
 	$('#imageData').html(html);
 
 	console.log(imageArray);
+
+}
+
+function onSuccessAlbum(file_uri) {
+
+		var data = encodeImageUri(file_uri);
+	    imageArray.push(data);  
+	    updateHtml();
 
 }
 
