@@ -147,7 +147,7 @@ function onSuccessAlbum(file_uri) {
 
 	    var reader = new FileReader();
 	    reader.onload = function(event) {
-	        var dataUri = event.target.result,
+	        var dataUri = event.target.result;
 	        console.log('dataUri: ' + dataUri);
 	    };
 	    reader.readAsDataURL(file)
