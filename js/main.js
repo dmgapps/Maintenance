@@ -102,7 +102,7 @@ function takePictureAlbum() {
 
 	var options = {
 	                    quality : 100,
-	                    destinationType : destinationType: Camera.DestinationType.FILE_URI,
+	                    destinationType : Camera.DestinationType.FILE_URI,
 	                    sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM,
 	                    allowEdit : true,
 	                    encodingType: Camera.EncodingType.JPEG,
