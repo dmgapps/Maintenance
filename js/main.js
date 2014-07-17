@@ -149,7 +149,7 @@ function onSuccessAlbum(file_uri) {
 
 		reader.onloadend = function () {
 
-		    console.log('reader result: ' + reader.result;
+		    console.log('reader result: ' + reader.result);
 
 		 }
 
