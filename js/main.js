@@ -144,6 +144,16 @@ function onSuccessAlbum(file_uri) {
 	    console.log("FILE_URI: " +  data);
 	    updateHtml();
 	    */
+
+	    var reader = new FileReader();
+	    reader.onload = function(event) {
+	        var dataUri = event.target.result,
+	        console.log('dataUri: ' + dataUri);
+	    };
+	    reader.readAsDataURL(file)
+
+
+	    /*
 	    var reader = new FileReader();
 	    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFileSystem, fail);
 		
@@ -165,6 +175,7 @@ function onSuccessAlbum(file_uri) {
 
 	    	console.log(message);
 	    };
+	    */
 
 }
 
@@ -180,19 +191,19 @@ function onSuccess(data) {
 	    updateHtml();
 
 	     	
-	     	/*
-	        var options = new FileUploadOptions();
-	        options.fileKey = "file";
-	        options.fileName = fileURI.substr(fileURI.lastIndexOf('/') + 1);
-	        options.mimeType = "image/jpeg";
-	        var params = new Object();
-	        params.appID = appid;
-	        params.eventTabID = document.getElementById('event_tab_id').value;
-	        params.name = name;
-	        options.params = params;
-	        var ft = new FileTransfer();
-	        ft.upload(fileURI, encodeURI(url), win, fail, options);
-	        */
+	   /*
+	     var options = new FileUploadOptions();
+	     options.fileKey = "file";
+	     options.fileName = fileURI.substr(fileURI.lastIndexOf('/') + 1);
+	     options.mimeType = "image/jpeg";
+	     var params = new Object();
+	     params.appID = appid;
+	     params.eventTabID = document.getElementById('event_tab_id').value;
+	     params.name = name;
+	     options.params = params;
+	     var ft = new FileTransfer();
+	     ft.upload(fileURI, encodeURI(url), win, fail, options);
+	     */
 }
 
 function onFail(message) {
