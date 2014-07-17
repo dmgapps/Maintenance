@@ -117,13 +117,18 @@ function takePictureAlbum() {
 
 }
 
-function updateHtml() {
+function updateHtml(header) {
 
 	var html = "";
 
 	for(var i = 0; i < imageArray.length; i++) {
 
-		var src = "data:image/jpeg;base64," + imageArray[i];
+		var src = "";
+		if(header)
+			src = imageArray[i];
+		else
+			src = "data:image/jpeg;base64," + imageArray[i];
+
 		html += '<img src="' + src + '" />';
 		html += '<br />';
 	}
@@ -136,9 +141,8 @@ function updateHtml() {
 function onSuccessAlbum(file_uri) {
 
 		var data = encodeImageUri(file_uri);
-		console.log("uri data: " + data);
 	    imageArray.push(data);  
-	    updateHtml();
+	    updateHtml(true);
 
 }
 
@@ -150,7 +154,7 @@ function onSuccess(data) {
 			
 	    //var image = document.getElementById('reportImage');
 	    imageArray.push(data);  
-	    updateHtml();
+	    updateHtml(false);
 
 	     	
 	     	/*
