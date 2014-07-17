@@ -1,7 +1,8 @@
 var imageData;
 var imageArray = [];
+var destinationType = "DATA_URL";
 
-$(document).bind('mobileinit pageinit', function(e){
+$(document).bind('mobileinit pageinit', function(e)	{
 
 
 
@@ -39,8 +40,7 @@ function sendForm() {
 
 }
 
-function encodeImageUri(imageUri)
-{
+function encodeImageUri(imageUri) {
     
     var c = document.createElement('canvas');
     var ctx = c.getContext("2d");
@@ -54,9 +54,9 @@ function encodeImageUri(imageUri)
     };
 
     img.src = imageUri;
-    var dataURL = c.toDataURL("image/jpeg");
-    
-    return dataURL;
+    var dataUrl = c.toDataURL("image/jpeg");
+
+    return dataUrl;
 }
 
 
@@ -125,7 +125,6 @@ function onSuccess(data) {
 		//fileURI
 			
 	    //var image = document.getElementById('reportImage');
-	    //image.src = "data:image/jpeg;base64," + data;
 	    imageArray.push(data);  
 	    updateHtml();
 	    
