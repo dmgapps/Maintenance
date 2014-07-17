@@ -136,11 +136,22 @@ function updateHtml() {
 
 function onSuccessAlbum(file_uri) {
 
+		/*
 		var data = encodeImageUri(file_uri);
 		data = data.replace("data:image/jpeg;base64,", "");
 	    imageArray.push(data);
 	    console.log("FILE_URI: " +  data);
 	    updateHtml();
+	    */
+
+	    var reader  = new FileReader();
+		reader.readAsDataURL(file_uri);
+
+		reader.onloadend = function () {
+
+		    console.log('reader result: ' + reader.result;
+
+		 }
 
 }
 
