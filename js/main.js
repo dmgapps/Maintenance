@@ -141,31 +141,6 @@ function onSuccessAlbum(file_uri) {
 	    imageArray.push(data);
 	    console.log("FILE_URI: " +  data);
 	    updateHtml();
-	    
-
-	    /*
-	    var reader = new FileReader();
-	    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFileSystem, fail);
-		
-
-	    function gotFS(fileSystem) {
-
-	    	console.log('got filesystem');
-	        fileSystem.root.getFile(file_uri, {create: false, exclusive: false}, gotFileEntry, fail);
-	    };
-
-	    function gotFileEntry(fileEntry) {
-
-	    	console.log('got file entry');
-	        reader.readAsDataURL(fileEntry);
-
-	    };
-
-	    function fail(message) {
-
-	    	console.log(message);
-	    };
-	    */
 
 }
 
