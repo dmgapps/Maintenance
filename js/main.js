@@ -16,8 +16,6 @@ $( document ).ready(function() {
 		document is loaded
 	*/ 
 
-	reader = new FileReader();
-
 
 });
 
@@ -144,14 +142,6 @@ function onSuccessAlbum(file_uri) {
 	    console.log("FILE_URI: " +  data);
 	    updateHtml();
 	    */
-
-	    var reader = new FileReader();
-	    reader.onload = function(event) {
-	        var dataUri = event.target.result;
-	        console.log('dataUri: ' + dataUri);
-	    };
-	    reader.readAsDataURL(file)
-
 
 	    /*
 	    var reader = new FileReader();
