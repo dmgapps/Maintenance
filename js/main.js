@@ -31,7 +31,13 @@ function sendForm() {
 
 	$.post(url, params, function(data) {
 				
-		console.log(data);
+		alert("Report Completed");
+
+		$('#fullName').val("");
+		$('#storeLocation').val("");
+		$('#incidentReport').val("");
+		$.mobile.navigate('#Home', { transition : "flow"});
+
 
 	});
 
@@ -98,25 +104,6 @@ function takePicture() {
 }
 
 
-function takePictureAlbum() {
-
-	var options = {
-	                    quality : 100,
-	                    destinationType : Camera.DestinationType.FILE_URI,
-	                    sourceType : Camera.PictureSourceType.SAVEDPHOTOALBUM,
-	                    allowEdit : true,
-	                    encodingType: Camera.EncodingType.JPEG,
-	                    targetWidth: 500,
-	                    targetHeight: 500,
-	                    popoverOptions: CameraPopoverOptions,
-	                    saveToPhotoAlbum: false 
-	            };
-
-	navigator.camera.getPicture(onSuccessAlbum, onFail, options);
-
-
-}
-
 function updateHtml() {
 
 	var html = "";
@@ -168,7 +155,7 @@ function onSuccess(data) {
 	     options.params = params;
 	     var ft = new FileTransfer();
 	     ft.upload(fileURI, encodeURI(url), win, fail, options);
-	     */
+	   */
 }
 
 function onFail(message) {
