@@ -38,6 +38,8 @@ function sendForm() {
 		$('#incidentReport').val("");
 		$.mobile.navigate('#Home', { transition : "flow"});
 
+		imageArray = [];
+
 
 	});
 
