@@ -22,26 +22,37 @@ $( document ).ready(function() {
 
 function sendForm() {
 
+	
+
 	var fullName = $('#fullName').val();
 	var storeLocation = $('#storeLocation').val();
 	var incidentReport = $('#incidentReport').val();
 
-	var url = 'http://dmgdemos.com/mallapp/_server-scripts/uploadForm.php';
-	var params = {'images[]': imageArray, posted:true, fullname: fullName, storelocation: storeLocation, incidentreport: incidentReport};
+	if(fullName === "" || storeLocation === "" || incidentReport === "")
+		alert('form must be completed');
 
-	$.post(url, params, function(data) {
-				
-		alert("Report Completed");
+	else {
 
-		$('#fullName').val("");
-		$('#storeLocation').val("");
-		$('#incidentReport').val("");
-		$.mobile.navigate('#Home', { transition : "flow"});
+		$( "#reportOverlay" ).popup("open");
+		var url = 'http://dmgdemos.com/mallapp/_server-scripts/uploadForm.php';
+		var params = {'images[]': imageArray, posted:true, fullname: fullName, storelocation: storeLocation, incidentreport: incidentReport};
 
-		imageArray = [];
+		$.post(url, params, function(data) {
+			
+			$( "#reportOverlay" ).popup("close");
+			alert("Report Completed");
+
+			$('#fullName').val("");
+			$('#storeLocation').val("");
+			$('#incidentReport').val("");
+			$.mobile.navigate('#Home', { transition : "flow"});
+
+			imageArray = [];
 
 
-	});
+		});
+
+	}
 
 }
 
@@ -59,7 +70,6 @@ function encodeImageUri(imageUri) {
     };
 
     img.src = imageUri;
-    console.log("encodeImageUri: " + imageUri);
     var dataUrl = c.toDataURL("image/jpeg");
 
     return dataUrl;
@@ -128,7 +138,6 @@ function onSuccessAlbum(file_uri) {
 		var data = encodeImageUri(file_uri);
 		data = data.replace("data:image/jpeg;base64,", "");
 	    imageArray.push(data);
-	    console.log("FILE_URI: " +  data);
 	    updateHtml();
 
 }
@@ -141,7 +150,6 @@ function onSuccess(data) {
 			
 	    //var image = document.getElementById('reportImage');
 	    imageArray.push(data);
-	    console.log("DATA_URL: " + data);  
 	    updateHtml();
 
 	     	

@@ -48,23 +48,10 @@
   <link href="css/icons.css"       rel="stylesheet"  type="text/css">
   <link href="css/retina.css"        rel="stylesheet"  type="text/css"   media="only screen and (-webkit-min-device-pixel-ratio: 2)" />
 
-<!--
-<script src="js/swipe.js"      type="text/javascript"></script>
-<script src="js/klass.min.js"    type="text/javascript"></script>
-<script src="js/photoswipe.js"   type="text/javascript"></script>
-<script src="js/jQuery.ui.datepicker.js"></script>
-<script src="js/jquery.ui.datepicker.mobile.js"></script>
--->
-
 
 <script src="js/main.js"></script>
 <script id="panel-init">
 
-      /*
-      $(function() {
-        $( "body>[data-role='panel']" ).panel();
-      });
-      */
 
 </script>
 
@@ -332,6 +319,10 @@
             <a href="javascript:sendForm();" data-role="button">Send Report</a>
           </form>
           </center>
+
+          <div data-role="popup" data-dismissible="false" data-transition="slideup" data-position-to="origin" id="reportOverlay" class="ui-content" data-theme="b" data-overlay-theme="a">
+          <p>Sending Report...</p>
+        </div>
 
         </div>
 
