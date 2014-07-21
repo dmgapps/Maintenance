@@ -41,14 +41,15 @@ function sendForm() {
 			
 			console.log(data);
 			$( "#reportOverlay" ).popup("close");
-			alert("Report Completed");
+			//alert("Report Completed");
 
+			imageArray = [];
 			$('#fullName').val("");
 			$('#storeLocation').val("");
 			$('#incidentReport').val("");
 			$.mobile.navigate('#Home', { transition : "flow"});
 
-			imageArray = [];
+			
 
 
 		});
