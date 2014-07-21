@@ -39,6 +39,7 @@ function sendForm() {
 
 		$.post(url, params, function(data) {
 			
+			console.log(data);
 			$( "#reportOverlay" ).popup("close");
 			alert("Report Completed");
 
