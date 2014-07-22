@@ -45,7 +45,6 @@ function sendForm() {
 
 		$.post(url, params, function(data) {
 			
-			console.log(data);
 			$( "#reportOverlay" ).popup("close");
 			//alert("Report Completed");
 
@@ -66,8 +65,7 @@ function sendForm() {
 
 }
 
-function createFileName()
-{
+function createFileName() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
@@ -170,7 +168,6 @@ function onSuccess(data) {
 		//fileURI
 	    imageArray.push(data);
 	    updateHtml();
-	    console.log('uploading image...');
 	    var filename = createFileName();
 	    fileNames.push(filename);
 
@@ -201,7 +198,7 @@ function onSuccess(data) {
 }
 
 function onFail(message) {
-	    console.log(message);
+
 }
 
 function clearCache() {
