@@ -66,6 +66,18 @@ function sendForm() {
 
 }
 
+function createFileName()
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 11; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return name + '.jpg';
+}
+
+
 function encodeImageUri(imageUri) {
     
     var c = document.createElement('canvas');
@@ -159,16 +171,17 @@ function onSuccess(data) {
 	    imageArray.push(data);
 	    updateHtml();
 	    console.log('uploading image...');
+	    var filename = createFileName();
+	    fileNames.push(filename);
 
 	    //upload image to server
 	    var url = 'http://dmgdemos.com/mallapp/_server-scripts/uploadImage.php';
-	    params = {imageData: data, posted:true};
+	    params = {imageData: data, fileName: filename, posted:true};
 
 	    $.post(url, params, function(data) {
 	    	
-	    	//add filename to array
-	    	fileNames.push(data);
-	    	console.log(fileNames);
+	    	
+	    	console.log('upload complete');
 
 
 	    });
