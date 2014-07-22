@@ -158,6 +158,7 @@ function onSuccess(data) {
 		//fileURI
 	    imageArray.push(data);
 	    updateHtml();
+	    console.log('uploading image...');
 
 	    //upload image to server
 	    var url = 'http://dmgdemos.com/mallapp/_server-scripts/uploadImage.php';
