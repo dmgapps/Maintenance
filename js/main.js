@@ -178,13 +178,7 @@ function onSuccess(data) {
 	    var url = 'http://dmgdemos.com/mallapp/_server-scripts/uploadImage.php';
 	    params = {imageData: data, fileName: filename, posted:true};
 
-	    $.post(url, params, function(data) {
-	    	
-	    	
-	    	console.log('upload complete');
-
-
-	    });
+	    $.post(url, params, null);
 
 
 
