@@ -1,5 +1,6 @@
 var imageData;
 var imageArray = [];
+var fileNames = [];
 
 
 $(document).bind('mobileinit pageinit', function(e)	{
@@ -33,9 +34,14 @@ function sendForm() {
 
 	else {
 
+		//logging
+
+
 		$( "#reportOverlay" ).popup("open");
 		var url = 'http://dmgdemos.com/mallapp/_server-scripts/uploadForm.php';
-		var params = {'images[]': imageArray, posted:true, fullname: fullName, storelocation: storeLocation, incidentreport: incidentReport};
+
+		//'images[]': imageArray
+		var params = {'fileNames[]': fileNames, posted:true, fullname: fullName, storelocation: storeLocation, incidentreport: incidentReport};
 
 		$.post(url, params, function(data) {
 			
@@ -44,6 +50,8 @@ function sendForm() {
 			//alert("Report Completed");
 
 			imageArray = [];
+			fileNames = [];
+			updateHtml();
 			$('#fullName').val("");
 			$('#storeLocation').val("");
 			$('#incidentReport').val("");
@@ -146,13 +154,27 @@ function onSuccessAlbum(file_uri) {
 
 
 function onSuccess(data) {
-
-
+		
 		//fileURI
-			
-	    //var image = document.getElementById('reportImage');
 	    imageArray.push(data);
 	    updateHtml();
+
+	    //upload image to server
+	    var url = 'http://dmgdemos.com/mallapp/_server-scripts/uploadImage.php';
+	    params = {imageData: data, posted:true};
+
+	    $.post(url, params, function(data) {
+	    	
+	    	//add filename to array
+	    	fileNames.push(data);
+	    	console.log(fileNames);
+
+
+	    });
+
+
+
+
 
 	     	
 	   /*
@@ -171,7 +193,7 @@ function onSuccess(data) {
 }
 
 function onFail(message) {
-	    document.getElementById('cameraError').innerHTML = message;
+	    console.log(message);
 }
 
 function clearCache() {
