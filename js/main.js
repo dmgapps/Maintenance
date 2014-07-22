@@ -74,7 +74,7 @@ function createFileName()
     for( var i=0; i < 11; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-    return name + '.jpg';
+    return text + '.jpg';
 }
 
 
