@@ -45,16 +45,17 @@ function sendForm() {
 
 		$.post(url, params, function(data) {
 			
-			$( "#reportOverlay" ).popup("close");
+			$.mobile.navigate('#Home', { transition : "flow"});
 			//alert("Report Completed");
 
+			$( "#reportOverlay" ).popup("close");
 			imageArray = [];
 			fileNames = [];
 			updateHtml();
 			$('#fullName').val("");
 			$('#storeLocation').val("");
 			$('#incidentReport').val("");
-			$.mobile.navigate('#Home', { transition : "flow"});
+			
 
 			
 
