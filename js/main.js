@@ -41,7 +41,7 @@ function sendForm() {
 		var url = 'http://dmgdemos.com/mallapp/_server-scripts/uploadForm.php';
 
 		//'images[]': imageArray
-		var params = {'fileNames[]': fileNames, posted:true, fullname: fullName, storelocation: storeLocation, incidentreport: incidentReport};
+		var params = {'fileNames[]': fileNames, posted:true, fullname: fullName, storelocation: storeLocation, incidentreport: incidentReport, type: 'Maintenance'};
 
 		$.post(url, params, function(data) {
 			
