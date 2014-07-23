@@ -117,7 +117,6 @@ function getReportForm(reportName) {
 
 
 function takePicture() {
-
 	var options = {
 	                    quality : 100,
 	                    destinationType : Camera.DestinationType.DATA_URL,
