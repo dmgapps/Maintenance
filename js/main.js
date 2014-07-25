@@ -29,13 +29,60 @@ function sendForm() {
 	var storeLocation = $('#storeLocation').val();
 	var incidentReport = $('#incidentReport').val();
 
+
+	//injured party information
+
+
 	if(fullName === "" || storeLocation === "" || incidentReport === "")
 		alert('form must be completed');
 
 	else {
 
-		//logging
+		
+		$( "#reportOverlay" ).popup("open");
+		var datastring = $("#reportPostForm").serialize();
+		datastring += '&type=Maintenance&posted=1';
 
+		console.log(datastring);
+
+		$.ajax({
+		            type: "POST",
+		            url: "http://dmgdemos.com/mallapp/_server-scripts/uploadForm.php",
+		            data: datastring,
+		            success: function(data) {
+
+		            	$.mobile.navigate('#Home', { transition : "flow"});
+
+		            	$( "#reportOverlay" ).popup("close");
+		            	imageArray = [];
+		            	fileNames = [];
+		            	updateHtml();
+
+		            	$('#fullName').val("");
+		            	$('#storeLocation').val("");
+		            	$('#incidentReport').val("");
+		            	$('#injuredType').val("");
+		            	$('#isInjured').val("");
+		            	$('#injuredAge').val("");
+		            	$('#injuredName').val("");
+		            	$('#injuredAddress').val("");
+		            	$('#injuredPhone').val("");
+		            	$('#injuredDescribe').val("");
+		            	$('#witnessName').val("");
+		            	$('#witnessAddress').val("");
+		            	$('#witnessPhone').val("");
+
+		            },
+		            error: function(error){
+
+		            	console.log(error);
+
+		            }
+		        });
+
+
+
+		/*
 
 		$( "#reportOverlay" ).popup("open");
 		var url = 'http://dmgdemos.com/mallapp/_server-scripts/uploadForm.php';
@@ -43,6 +90,7 @@ function sendForm() {
 		//'images[]': imageArray
 		var params = {'fileNames[]': fileNames, posted:true, fullname: fullName, storelocation: storeLocation, incidentreport: incidentReport, type: 'Maintenance'};
 
+		
 		$.post(url, params, function(data) {
 			
 			$.mobile.navigate('#Home', { transition : "flow"});
@@ -55,12 +103,10 @@ function sendForm() {
 			$('#fullName').val("");
 			$('#storeLocation').val("");
 			$('#incidentReport').val("");
-			
-
-			
-
 
 		});
+
+		*/
 
 	}
 
@@ -198,6 +244,8 @@ function onSuccess(data) {
 }
 
 function onFail(message) {
+
+	
 
 }
 
