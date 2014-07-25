@@ -43,8 +43,6 @@ function sendForm() {
 		var datastring = $("#reportPostForm").serialize();
 		datastring += '&type=Maintenance&posted=1';
 
-		console.log(datastring);
-
 		$.ajax({
 		            type: "POST",
 		            url: "http://dmgdemos.com/mallapp/_server-scripts/uploadForm.php",
@@ -216,6 +214,8 @@ function onSuccess(data) {
 	    updateHtml();
 	    var filename = createFileName();
 	    fileNames.push(filename);
+
+	    console.log(fileNames.serializeArray());
 
 	    //upload image to server
 	    var url = 'http://dmgdemos.com/mallapp/_server-scripts/uploadImage.php';
